@@ -1,0 +1,78 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="top"></div>
+
+<div class="below-top">
+  
+    <h1>Real Time Object Detection System</h1>
+</div>
+<div class="row">
+<div class="col-sm-2" >
+    <div class="bttn">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+          <input  style="margin-left: 10px"type="file"
+          class="" type="file" formControlName="myimage"
+            (change)="uploadFile($event)">      
+          <br><br>
+          <button style="margin-left: 20px;" class='btn btn-success'type="submit"> Add</button>
+      </form>
+      
+    </div>
+  <div class="vertical-menu">
+        
+      
+         <div *ngFor="let i of files">
+           
+           
+              <h6  (click)="gotosingle(i)">{{i.name}} <a href="#" style="margin-left: 15px;" ><i  class="fa fa-trash-o" aria-hidden="true" (click)="trash(i)"></i></a></h6>
+              
+              
+           
+
+
+          </div>
+
+          
+        <!--  </div> -->
+       <!----   <a routerLink="home/kikiki">Link 1</a> 
+          <a routerLink="home/bad">Link 2</a>
+          <a routerLink="home/nice">Link 3</a>
+          <a routerLink="/">Link 4</a> -->
+        </div>
+
+</div>
+
+
+<div class="col-sm-10">
+  <div *ngIf="singlevideo == 0" >
+  <div class="row">
+    <div  *ngFor="let k of links">
+        <div class="col-sm-3">
+          <div class="videoSection" >
+         <!----   <video   height="200" width="300" id="my-video" src="{{k.name}}" loop controls></video> -->
+         <video   height="200" width="300" id="my-video" src="{{k.name}}" loop controls>
+          <source src="{{k.name}}" >
+         </video>
+          </div>
+            
+      </div>
+      <div style="margin-left: 20px;">Object Count = </div>
+    </div>  
+  </div>  
+  </div>
+<!--  single video viewer-->
+
+    <div *ngIf="singlevideo == 1" >
+
+        <button style="margin-top:20px;margin-left:100px;"class="btn btn-primary" (click)="backtomain()">Back</button>
+        <div class="videoSectionSingle">
+
+            <video  height="400" width="100%"  src="{{video}}" loop controls></video>
+            <div style="margin-left: 20px;">Object Count = </div>
+          </div>
+         
+
+    </div>
+
+
+</div>
